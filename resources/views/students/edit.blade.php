@@ -23,7 +23,7 @@
                     </div>
 
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800">Save</button>
-                    <a href="">Cancel</a>
+                    <a href="{{route('students.index')}}">Cancel</a>
                 </form>
             </div>
         </div>
