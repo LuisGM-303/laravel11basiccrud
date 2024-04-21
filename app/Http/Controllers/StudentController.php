@@ -14,6 +14,7 @@ class StudentController extends Controller
     {
         $students = Student::all();
         return view('students.index', compact('students'));
+        //return view('students.index')->with('students', $students);
     }
 
     /**
@@ -21,7 +22,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.create');
     }
 
     /**
@@ -29,7 +30,14 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|min:5|max:255',
+            'age' => 'required|integer|min:1',
+        ]);
+
+        Student::create($request->all());
+
+        return redirect()->route('students.index');
     }
 
     /**
